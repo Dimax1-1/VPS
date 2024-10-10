@@ -1,5 +1,5 @@
 <?php
-$dbhost = "localhost";
+$dbhost = "151.80.149.206";
 $dbport = "5432";
 $dbname = "progetto";
 $dbuser = "postgres";
