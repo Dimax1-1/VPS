@@ -1,6 +1,6 @@
 <?php
 // Connessione al database
-include 'connactio.php';
+include 'connaction.php';
 
 $message = ''; // Variabile per memorizzare l'errore
 
