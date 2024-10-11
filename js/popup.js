@@ -1,3 +1,5 @@
+const popup = document.querySelector(".popup");
+const overlay = document.querySelector(".overlay");
 // Funzione per ottenere il messaggio dall'URL
 function getMessageFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -16,8 +18,6 @@ if (message) {
         apriPopup(message);
     }
 }
-const popup = document.querySelector(".popup");
-const overlay = document.querySelector(".overlay");
 
 // Funzione per aprire il popup
 function apriPopup(message) {
