@@ -12,6 +12,7 @@ if (message) {
     // Esegui controlli sul messaggio per capire quale popup mostrare
     if (message.includes("Username o password errati. Riprova.")) {
         ErrorePopupLog(message);
+        console.log("ciao")
     } if (message.includes("Email già registrata")) {
         ErrorePopupReg(message);
     }else {
@@ -31,6 +32,7 @@ function apriPopup(message) {
     // Aggiungi l'evento al pulsante per chiudere il popup
     document.querySelector(".ok").addEventListener("click", chiudiPopup);
 }
+
 //gestione errore popup nel login 
 function ErrorePopupLog(message) {
     popup.innerHTML = `
