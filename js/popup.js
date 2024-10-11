@@ -1,3 +1,21 @@
+// Funzione per ottenere il messaggio dall'URL
+function getMessageFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('message');
+}
+
+// Mostra il popup se c'è un messaggio nell'URL
+const message = getMessageFromUrl();
+if (message) {
+    // Esegui controlli sul messaggio per capire quale popup mostrare
+    if (message.includes("Username o password errati. Riprova.")) {
+        ErrorePopupLog(message);
+    } if (message.includes("Email già registrata")) {
+        ErrorePopupReg(message);
+    }else {
+        apriPopup(message);
+    }
+}
 const popup = document.querySelector(".popup");
 const overlay = document.querySelector(".overlay");
 
@@ -51,22 +69,4 @@ function chiudiPopupErrorLog() {
     overlay.classList.remove("open");
     popup.classList.remove("open-popup");
     window.location.href = "../login.html"; // Reindirizza al login
-}
-// Funzione per ottenere il messaggio dall'URL
-function getMessageFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('message');
-}
-
-// Mostra il popup se c'è un messaggio nell'URL
-const message = getMessageFromUrl();
-if (message) {
-    // Esegui controlli sul messaggio per capire quale popup mostrare
-    if (message.includes("Username o password errati. Riprova.")) {
-        ErrorePopupLog(message);
-    } if (message.includes("Email già registrata")) {
-        ErrorePopupReg(message);
-    }else {
-        apriPopup(message);
-    }
 }
