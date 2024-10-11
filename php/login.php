@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Verifica se l'utente esiste
-    $query = "SELECT * FROM utenti WHERE email = '$username'";
+    $query = "SELECT * FROM utenti WHERE username = '$username'";
     $result = pg_query($conn, $query);
     $user = pg_fetch_assoc($result);
 

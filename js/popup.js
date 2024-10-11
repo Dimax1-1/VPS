@@ -13,14 +13,25 @@ function apriPopup(message) {
     // Aggiungi l'evento al pulsante per chiudere il popup
     document.querySelector(".ok").addEventListener("click", chiudiPopup);
 }
-
-function ErrorePopup() {
+//gestione errore popup nel login 
+function ErrorePopupLog(message) {
     popup.innerHTML = `
     <h2>Errore!</h2>
     <p>${message}</p>
     <button class="ok"><span>Ok</span></button>`;
     popup.classList.add("open-popup")
     overlay.classList.add("open");
+    document.querySelector(".ok").addEventListener("click", chiudiPopupErrorLog);
+}
+//gestione errore popup nel login
+function ErrorePopupReg(message) {
+    popup.innerHTML = `
+    <h2>Errore!</h2>
+    <p>${message}</p>
+    <button class="ok"><span>Ok</span></button>`;
+    popup.classList.add("open-popup")
+    overlay.classList.add("open");
+    document.querySelector(".ok").addEventListener("click", chiudiPopupErrorReg);
 }
 
 // Funzione per chiudere il popup e reindirizzare alla home
@@ -30,6 +41,17 @@ function chiudiPopup() {
     window.location.href = "/html/home.html"; // Reindirizza alla home
 }
 
+function chiudiPopupErrorReg() {
+    overlay.classList.remove("open");
+    popup.classList.remove("open-popup");
+    window.location.href = "../index.html"; // Reindirizza alla registrazione
+}
+
+function chiudiPopupErrorLog() {
+    overlay.classList.remove("open");
+    popup.classList.remove("open-popup");
+    window.location.href = "../login.html"; // Reindirizza al login
+}
 // Funzione per ottenere il messaggio dall'URL
 function getMessageFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -39,5 +61,12 @@ function getMessageFromUrl() {
 // Mostra il popup se c'è un messaggio nell'URL
 const message = getMessageFromUrl();
 if (message) {
-    apriPopup(message);
+    // Esegui controlli sul messaggio per capire quale popup mostrare
+    if (message.includes("Username o password errati. Riprova.")) {
+        ErrorePopupLog(message);
+    } if (message.includes("Email già registrata")) {
+        ErrorePopupReg(message);
+    }else {
+        apriPopup(message);
+    }
 }
