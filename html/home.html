@@ -1,8 +1,51 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="it">
 
-    </head>
-    <body>
-        <h1>Sei alla home</h1>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Clienti</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Inserimento Dati Clienti</h1>
+        <form action="php/inserimento.php" method="POST" class="inserimento">
+            <div class="form-group">
+                <label for="nome">Nome Cliente:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="polizza">Numero Polizza/Targa:</label>
+                <input type="text" id="polizza" name="polizza" required>
+            </div>
+
+            <div class="form-group">
+                <label for="scadenza">Scadenza:</label>
+                <input type="date" id="scadenza" name="scadenza" required>
+            </div>
+
+            <div class="form-group">
+                <label for="premio">Premio:</label>
+                <input type="text" id="premio" name="premio" required>
+            </div>
+
+            <button type="submit">Inserisci Cliente</button>
+        </form>
+    </div>
+
+    <!-- Pulsante Visualizza Storico sotto e a sinistra -->
+    <div class="form-visualizza-storico">
+        <form action="visualizza.php" method="GET">
+            <button type="submit">Visualizza Storico</button>
+        </form>
+    </div>
+</body>
+
 </html>

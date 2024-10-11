@@ -1,66 +1,76 @@
 /* Generale */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .form-container {
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
     width: 100%;
+    animation: fadeIn 0.5s ease;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 26px;
     color: #333;
+    font-weight: 600;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #555;
+    font-size: 14px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
     box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #5cb85c;
+    outline: none;
+    box-shadow: 0 0 8px rgba(92, 184, 92, 0.1);
 }
 
 button[type="submit"] {
     width: 100%;
     background-color: #5cb85c;
     color: white;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button[type="submit"]:hover {
     background-color: #4cae4c;
+    transform: scale(1.05);
 }
 
 .login-link {
@@ -77,7 +87,7 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* Popup */
+/* Overlay */
 .overlay {
     display: none;
     position: fixed;
@@ -88,30 +98,90 @@ button[type="submit"]:hover {
     background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 
+/* Popup */
 .popup {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
     text-align: center;
     display: none;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 11;
+    animation: fadeIn 0.3s ease;
 }
 
-.open-popup {
-    display: block;
+.popup h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.popup p {
+    font-size: 16px;
+    color: #666;
 }
 
 .popup button {
-    padding: 10px 20px;
+    padding: 10px 30px;
     margin-top: 20px;
     background-color: #5cb85c;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .popup button:hover {
     background-color: #4cae4c;
+    transform: scale(1.05);
+}
+
+/* Classi per gestire apertura */
+.open-popup {
+    display: block;
+}
+
+.open-overlay {
+    display: flex;
+}
+
+/* Aggiunta di stile per il pulsante Visualizza Storico */
+.form-visualizza-storico {
+    margin-top: 20px;
+    float: left;
+}
+
+.form-visualizza-storico button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-visualizza-storico button:hover {
+    background-color: #4cae4c;
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
