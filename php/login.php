@@ -14,13 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = pg_fetch_assoc($result);
 
     if ($user && password_verify($password, $user['password'])) {
+        $id_user = $user['id'];
         // Login riuscito
         $message = "Login effettuato con successo!";
+        header("Location: ../login.html?message=" . urlencode($message) . "&id=" . urlencode($user_id));
+        exit();
     } else {
         // Login fallito
         $message = "Username o password errati. Riprova.";
+        header("Location: ../login.html?message=" . urlencode($message));
+        exit();
     }
-    header("Location: ../login.html?message=" . urlencode($message));
-    exit();
 }
 ?>

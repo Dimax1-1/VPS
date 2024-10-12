@@ -1,0 +1,21 @@
+CREATE TABLE Clienti (
+    ID serial PRIMARY KEY,
+    Nome varchar(255) NOT NULL,
+    Indirizzo_Email varchar(255) NOT NULL,
+    Numero_Polizza varchar(50) NOT NULL,
+    Scadenza date NOT NULL,
+    Premio varchar(50) NOT NULL,
+    Fattura varchar(50),
+    Frazionamento varchar(20) NOT NULL CHECK (Frazionamento IN ('Annuale', 'Semestrale')),
+    Indicizzato boolean DEFAULT false,
+    Agenzia varchar(255) NOT NULL,
+    ID_Utente int NOT NULL,
+    FOREIGN KEY (ID_Utente) REFERENCES Utenti(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE Utenti (
+    ID serial PRIMARY KEY,
+    Username varchar(255) NOT NULL,
+    Email varchar(100) NOT NULL,
+    Password varchar(255) NOT NULL
+);

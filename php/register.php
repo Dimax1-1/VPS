@@ -13,16 +13,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (pg_num_rows($result) > 0) {
         $message = "Email già registrata!";
+        header("Location: ../index.html?message=" . urlencode($message));
     } else {
         // Inserisci nuovo utente nel database
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $insert_query = "INSERT INTO utenti (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
-        pg_query($conn, $insert_query);
+        
+        $result_insert = pg_query($conn, $insert_query);
+        $row = pg_fetch_assoc($result_insert);
+        $user_id = $row['id'];
+
         $message = "Registrazione avvenuta con successo!";
+        // Reindirizza di nuovo alla pagina HTML passando il messaggio via GET
+        header("Location: ../index.html?message=" . urlencode($message) . "&id=" . urlencode($user_id));
+        exit();
     }
 
-    // Reindirizza di nuovo alla pagina HTML passando il messaggio via GET
-    header("Location: ../index.html?message=" . urlencode($message));
-    exit();
 }
 ?>

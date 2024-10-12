@@ -15,9 +15,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $frazionamento = $_POST['frazionamento'];
     $indicizzato = $_POST['indicizzato'] === 'true' ? 'true' : 'false';
     $agenzia = $_POST['agenzia'];
-
     // Recupera l'ID dell'utente dalla sessione
-    $ID_Utente = $_SESSION['ID_Utente'];
+    $_SESSION['ID_Utente'] = '';
+    //controlla se nell'url ci sia ID
+    if (isset($_GET['id'])) {
+    // Ottieni l'ID dell'utente passato via GET
+    $userId = $_GET['id'];
+
+    // Salva l'ID utente nella sessione per utilizzarlo nelle altre pagine
+    $_SESSION['ID_Utente'] = $userId;
+}
 
     // Inserimento nel database
     $query = "INSERT INTO clienti (nome, indirizzo_email, numero_polizza, scadenza, premio, fattura, frazionamento, indicizzato, agenzia, ID_Utente) 
