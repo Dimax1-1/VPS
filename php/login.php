@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_user = $user['id'];
         // Login riuscito
         $message = "Login effettuato con successo!";
-        header("Location: ../login.html?message=" . urlencode($message) . "&id=" . urlencode($user_id));
+        header("Location: ../login.html?message=" . urlencode($message) . "&id=" . urlencode($id_user));
         exit();
     } else {
         // Login fallito
