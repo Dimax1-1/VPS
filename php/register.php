@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $result_insert = pg_query($conn, $insert_query);
         $row = pg_fetch_assoc($result_insert);
-        $user_id = $row['id'];
+        $id_user = $row['id'];
 
         $message = "Registrazione avvenuta con successo!";
         // Reindirizza di nuovo alla pagina HTML passando il messaggio via GET
-        header("Location: ../index.html?message=" . urlencode($message) . "&id=" . urlencode($user_id));
+        header("Location: ../index.html?message=" . urlencode($message) . "&id=" . urlencode($id_user));
         exit();
     }
 
