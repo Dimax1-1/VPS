@@ -22,15 +22,16 @@ if (message) {
     } else if (message.includes("Email già registrata")) {
         ErrorePopupReg(message);
     } else {
-        apriPopup(message);
+        apriPopup(message, id);
     }
 }
 
 // Funzione per aprire il popup
-function apriPopup(message) {
+function apriPopup(message, id) {
     popup.innerHTML = `
     <h2>Benvenuto!</h2>
     <p>${message}</p>
+    <p>${id}</p>
     <button class="ok"><span>Ok</span></button>`;
     popup.classList.add("open-popup");
     overlay.classList.add("open");
