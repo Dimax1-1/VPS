@@ -5,9 +5,16 @@ function getMessageFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('message');
 }
+//funzione per ottenere ID
+function getIDFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('id');
+}
 
-// Mostra il popup se c'è un messaggio nell'URL
+// Mostra il popup se c'è un messaggio e id nell'URL
 const message = getMessageFromUrl();
+const id = getIDFromUrl()
+
 if (message) {
     // Esegui controlli sul messaggio per capire quale popup mostrare
     if (message.includes("Username o password errati. Riprova.")) {
@@ -57,7 +64,7 @@ function ErrorePopupReg(message) {
 function chiudiPopup() {
     overlay.classList.remove("open");
     popup.classList.remove("open-popup");
-    window.location.href = "/html/home.html"; // Reindirizza alla home
+    window.location.href = "/html/home.html?id=" + id;; // Reindirizza alla home
 }
 
 function chiudiPopupErrorReg() {
